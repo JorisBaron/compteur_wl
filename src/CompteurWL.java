@@ -97,12 +97,21 @@ public class CompteurWL {
 				
 				try (BufferedReader reader = Files.newBufferedReader(DATA_PATH, FILE_CHARSET)) {
 					JSONObject dataJson = new JSONObject(new JSONTokener(reader));
+					
 					if(!dataJson.has("actualWin") || !dataJson.has("actualLoss") || !dataJson.has("lastTimestamp")) {
 						this.println("Fichier data corrompu");
 						this.resetWLDataFiles();
 						this.println("Fichier data reset");
 					}
-					dataJson.getLong("lastTimestamp");
+					
+					long timestamp = dataJson.getLong("lastTimestamp");
+					if(timestamp<this.getMonthTimestamp()){
+						//debut de mois
+						this.println("Début de mois, remise à 0");
+						this.resetWLDataFiles();
+						this.resetOffestFile();
+					}
+					
 					dataJson.getInt("actualWin");
 					dataJson.getInt("actualLoss");
 					
