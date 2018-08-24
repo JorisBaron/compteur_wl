@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -63,8 +64,8 @@ public class JFrameConsole extends JFrame {
 		this.console.setMargin(new Insets(0, 5, 0, 5));
 		
 		this.add(new JScrollPane(this.console,
-				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, 
-                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER));
+				ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, 
+                ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER));
 	}
 	
 	private void initWLButt() {
@@ -106,6 +107,7 @@ public class JFrameConsole extends JFrame {
 		public void insertUpdate(DocumentEvent e) {
 			SwingUtilities.invokeLater( new Runnable()
 			{
+				@Override
 				public void run()
 				{
 					Document document = e.getDocument();

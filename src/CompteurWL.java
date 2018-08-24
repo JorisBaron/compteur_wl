@@ -50,6 +50,7 @@ public class CompteurWL {
 		this.lastRequestTimestamp = System.currentTimeMillis();
 		try {
 			SwingUtilities.invokeAndWait(new Runnable() {
+				@Override
 				public void run() {
 					CompteurWL.this.console=new JFrameConsole();
 				}
@@ -515,6 +516,7 @@ public class CompteurWL {
 		this.testFichier();
 		try {
 			SwingUtilities.invokeAndWait(new Runnable() {
+				@Override
 				public void run() {
 					CompteurWL.this.console.waitForOffsets();
 				}

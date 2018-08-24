@@ -15,6 +15,7 @@ import java.nio.file.Files;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
 
@@ -45,7 +46,7 @@ public class JFrameWL extends JFrame {
 		this.text = new JTextField();
 		this.text.setOpaque(false);
 		this.text.setEditable(false);
-		this.text.setHorizontalAlignment(JTextField.CENTER);
+		this.text.setHorizontalAlignment(SwingConstants.CENTER);
 		this.text.setAlignmentY(CENTER_ALIGNMENT);
 		this.text.setFont(this.text.getFont().deriveFont(75f));
 		this.text.setBorder(null);
