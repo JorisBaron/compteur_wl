@@ -13,6 +13,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -489,8 +490,12 @@ public class CompteurWL {
 	 */
 	public void refreshWL(int[] wl) {
 		try (BufferedWriter wlWriter = Files.newBufferedWriter(WL_PATH, FILE_CHARSET)) {
-			wlWriter.write(wl[0] + "/" + wl[1]);
-		} catch (IOException | JSONException e) {
+			GregorianCalendar cal = new GregorianCalendar();
+			String mois =cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.FRANCE  );
+			mois = mois.substring(0, 1).toUpperCase() + mois.substring(1);
+			
+			wlWriter.write("Win/Lose " + mois + " : " + wl[0] + "/" + wl[1]);
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
