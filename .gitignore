@@ -1,5 +1,6 @@
 */
 !src/
-src/auth-key
+!src/res
+src/res/auth-key
 .*
 !.gitignore
