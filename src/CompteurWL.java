@@ -35,7 +35,7 @@ public class CompteurWL {
 	private static final String MATCH_URL = API_BASE_URL + "match/";
 
 	private static final String AUTH_KEY = new Scanner(
-			CompteurWL.class.getClassLoader().getResourceAsStream("auth-key")).nextLine();
+			CompteurWL.class.getClassLoader().getResourceAsStream("res/auth-key")).nextLine();
 	private static final long GOB_ID = 21660361;
 
 	// remake Id : 3728299547

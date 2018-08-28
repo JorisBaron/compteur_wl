@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,6 +12,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -35,7 +37,9 @@ public class JFrameConsole extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 2537388080608607710L;
-
+	
+	private Image icon = new ImageIcon(getClass().getClassLoader().getResource("res/icon.png")).getImage();
+	
 	private JTextArea console;
 
 	private JProgressBar progress;
@@ -52,6 +56,7 @@ public class JFrameConsole extends JFrame {
 		this.initialise();
 		this.setLocationRelativeTo(null);
 		this.setLocation(100, 100);
+		this.setIconImage(icon);
 		this.pack();
 		this.setVisible(true);
 
@@ -215,7 +220,7 @@ public class JFrameConsole extends JFrame {
 				public void run() {
 					Document document = e.getDocument();
 					Element root = document.getDefaultRootElement();
-					while (root.getElementCount() > 100) {
+					while (root.getElementCount() > 1000) {
 						Element line = root.getElement(0);
 						int end = line.getEndOffset();
 
